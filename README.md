@@ -1,8 +1,18 @@
-# React + Vite
+# Truckit Code Challenge Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Instructions to Run on Local
 
-Currently, two official plugins are available:
+-   clone the repository
+-   run `npm install`
+-   run `npm run dev`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Explanation
+
+### React Library
+
+React Library was chosen because of ease of use for small application. Also React has a very good ecosystem,
+it can cater to different requirements.
+
+### Design Decisions
+
+-   use of multiple components to organize the code. Some of the component are static content some have business logic. Creating multiple components will be helpful in maintaining the code
