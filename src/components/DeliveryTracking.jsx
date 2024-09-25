@@ -1,11 +1,45 @@
 import { useState } from "react";
+import TrackingResult from "./TrackingResult";
 
 const DeliveryTracking = () => {
     const [trackingNumber, setTrackingNumber] = useState("");
-    const [trackingResult, setTrackingResult] = useState(null);
+    const [trackingResultData, setTrackingResultData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
-    const checkTracking = () => {
-        console.log("Track", trackingNumber);
+    const checkTracking = async () => {
+        try {
+            setError(false);
+            setLoading(true);
+            const res = await fetch(
+                `http://localhost:8000/api/delivery-status/${trackingNumber}`
+            );
+
+            const data = await res.json();
+
+            setTrackingResultData(data);
+        } catch (error) {
+            console.log("error", error);
+            setError(true);
+            setTrackingResultData(null);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const displayTrackinResult = () => {
+        if (trackingResultData && !error) {
+            return <TrackingResult result={trackingResultData} />;
+        } else if (error) {
+            return (
+                <div className="text-red-500 font-bold">
+                    {" "}
+                    ooops something went wrong!{" "}
+                </div>
+            );
+        } else {
+            return "";
+        }
     };
 
     return (
@@ -19,13 +53,13 @@ const DeliveryTracking = () => {
                 />
                 <button
                     onClick={checkTracking}
-                    className="border bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded-lg"
+                    className="border bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded-lg w-[100px]"
                 >
-                    Track
+                    {loading ? "Tracking" : "Track"}
                 </button>
             </div>
             <div className="container m-auto w-[600px] mt-5">
-                Tracking Result Here
+                {displayTrackinResult()}
             </div>
         </section>
     );
