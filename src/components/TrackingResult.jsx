@@ -10,7 +10,7 @@ const statusColor = {
 
 const TrackingResult = ({ result }) => {
     return (
-        <div className="flex flex-col gap-y-3 border border-solid border-indigo-200 bg-indigo-50 rounded-md shadow-md px-3 py-5">
+        <div className="mt-5 flex flex-col gap-y-3 border border-solid border-indigo-200 bg-indigo-50 rounded-md shadow-md px-3 py-5">
             <div className="flex items-center gap-x-2">
                 <span className="font-medium text-lg text-indigo-950">
                     Tracking Number:{" "}
@@ -22,9 +22,9 @@ const TrackingResult = ({ result }) => {
                     Tracking Status:{" "}
                 </span>
                 <span
-                    className={`bg-${
+                    className={`status-${
                         statusColor[result.status.key]
-                    }-500 px-2 py-1 rounded-lg text-white`}
+                    } px-2 py-1 rounded-lg text-white`}
                 >
                     {result.status.value}{" "}
                 </span>

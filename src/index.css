@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.status-blue {
+    @apply bg-blue-500;
+}
+
+.status-orange {
+    @apply bg-orange-500;
+}
+
+.status-yellow {
+    @apply bg-yellow-500;
+}
+
+.status-green {
+    @apply bg-green-500;
+}
+
+.status-violet {
+    @apply bg-violet-500;
+}
